@@ -1,0 +1,1217 @@
+/*
+Copyright © 2014, Bretislav Mazoch
+
+This file is part of 3D viewer app.
+
+3D viewer is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Foobar is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>. 
+*/
+
+
+
+/* **************** */
+/* TABS AND CONTENT */
+/* **************** */
+
+#present3d {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333;
+	line-height: 1.5em;
+}
+
+
+#present3d button {
+    cursor: pointer;  
+    border: none;
+    font-size: 100%;
+}
+
+#present3d ul.tabs {
+	position: relative;
+    list-style-type: none;
+	border-bottom: 15px solid #ffeea5;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	clear: both;
+}
+
+#present3d ul.tabs li {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	background-image: none;
+	background-color: #fff8c3;
+	text-align: center;
+	width: 210px;
+	height: 40px;
+	margin-right: 5px;
+	border-bottom: none;
+	float: left;
+}
+
+#present3d ul.tabs li a {
+	display: block;
+	padding: 10px;
+	background: #fff;
+	height: 19px;
+	transition: background-color 0.2s linear; 
+	border-top: 1px solid #ffeea5;
+	border-left: 1px solid #ffeea5;
+	border-right: 1px solid #ffeea5;
+	color: #000;	
+}
+
+#present3d ul.tabs li a:hover {
+	background-color: #fff8c3;
+	color: #ff4e00;
+}
+
+#present3d ul.tabs li.ui-tabs-active a {
+	background-color: #ffeea5;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+
+#present3d .alternative-content {	
+	position: relative;
+	border: 1px solid #fff8c3;
+	background: #fff8c3 url("../gui/stripes.png") top left;
+	margin: 0px;
+	padding: 10px;
+	text-indent: 0px;
+}
+
+#present3d .content {	
+	background: #fff;
+	position: relative;
+	padding: 20px;
+	border: 1px solid #fff8c3;
+}
+
+
+
+#present3d .place-for-3d {
+	position: relative;
+	/*width: 920px;
+	height: 690px;*/ /*width and height are setted programatically by default value*/
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	border: 1px solid #ffeea5;
+	background: #fff8c3 url("../gui/stripes.png") top left;  
+	font-family: Helvetica, Arial, sans-serif; 
+}
+
+#present3d .place-for-3d.fullscreen {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	text-indent: 0px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+#present3d .place-for-3d img {
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	clear: both;
+	float: none;
+	text-indent: 0px;
+}
+
+#present3d .container-3d {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	text-indent: 0px;
+	margin: 0px;
+	border: 0px none;	
+	background-image: radial-gradient(circle, #fff, #fff, #e2e2e2);	
+}
+
+#present3d .loading {
+  position: absolute;
+  display: none;
+  z-index: 200;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+  text-indent: 0px;
+  background: #fffce4;
+  width: 100%;
+  height: 100%;
+}
+
+#present3d .loading-stripes {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  margin-top: -70px;
+  padding: 0px;
+  text-indent: 0px;
+  border: 1px solid #ffeea5;
+  background: #fff8c3 url("../gui/stripes.png") top left;  
+  opacity: 1.0;
+  width: 100%;
+  text-align: center;
+  border-left: none;
+  border-right: none;
+}
+
+#present3d .loading-image {
+  position: relative;
+  background: transparent url("../gui/loading-text.gif") center center;
+  width: 92px;
+  height: 110px;  
+  left: 50%;
+  margin-left: -46px;
+}
+
+
+
+
+
+
+
+
+
+
+/* *************** */
+/* WEBGL DETECTION */
+/* *************** */
+
+#present3d .webgl-not-supported {
+  	position: relative;
+	border: 1px solid #fff8c3;
+	padding: 60px;
+	background: #fff8c3 url("../gui/stripes.png") top left;
+	display: none;
+}
+
+#present3d .webgl-not-supported ol {
+  	margin-bottom: 0px;
+}
+#present3d .webgl-not-supported ol li {
+  	margin-top: 15px;
+}
+
+#present3d .message {
+  	color: #da155d;
+  	/*border-left: 5px solid #da155d;*/
+  	padding-left: 10px;
+  	text-indent: 0px;
+	padding-left: 110px;
+	padding-right: 30px;
+    background: transparent url("../gui/info-icon2.png") 25px 0px no-repeat;
+    min-height: 65px;
+}
+
+#present3d .webgl-error-message1, #present3d .webgl-error-message2 {
+  	position: relative;
+  	border: 10px solid #621b3c; /*#621b3c*/
+	font-size: 13px;
+	font-weight: normal;
+	background: #fff;
+	color: #333;
+	padding: 1.5em;
+	text-align: left;
+	display: none;
+}
+
+#present3d .more-information {
+	position: relative;
+  	float: right;
+  	font-size: 90%;
+  	margin-left: 10px;
+  	padding-right: 23px;
+  	padding-top: 2px;
+  	padding-bottom: 2px;
+  	background: transparent url("../gui/arrow-more-information.png") 100% 2px no-repeat;
+}
+
+#present3d .message01option01, #present3d .message01option02, #present3d .message01option03,
+#present3d .message02option01, #present3d .message02option02 {
+  	display: none;
+}
+
+#present3d .webgl-not-supported h4 {
+	text-indent: 0px;
+	padding-left: 0px;
+	color: #777;
+	margin-bottom: 0px;
+}
+
+#present3d .webgl-not-supported em {
+	color: #a34b0f;
+}
+
+#present3d .webgl-not-supported a {
+	color: #0B0080;
+	text-decoration: underline;
+}
+
+#present3d .webgl-not-supported a:hover {
+	color: #0B0080;
+	text-decoration: none;
+}
+
+
+
+
+
+
+/* ********** */
+/* MENU PANEL */
+/* ********** */
+
+#present3d .panel-menu {
+	position: absolute;
+	z-index: 900;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 50px;
+	background: #ffd781; 
+    border-bottom: 4px solid #ffb820;
+}
+
+
+
+#present3d .info-button, #present3d .help-button, #present3d .fullscreen-button {
+    height: 54px;
+    width: 55px;
+    position: absolute;
+    border-bottom: 4px solid #ffb820;
+    border-left: 1px dotted #ffb820;
+    top: 0px;
+    left: 100%;
+	transition: background-color 0.2s linear; 
+	background-color: transparent;
+}
+
+#present3d .info-button:hover, #present3d .help-button:hover, #present3d .fullscreen-button:hover {
+    background-color: #ffcd61;
+}
+
+#present3d .info-button {
+    margin-left: -166px;
+    background: transparent url("../gui/button-info.png") center center no-repeat;
+}
+
+#present3d .help-button {
+    margin-left: -111px;
+    background: transparent url("../gui/button-help.png") center center no-repeat;
+}
+
+#present3d .fullscreen-button {
+    margin-left: -56px;
+    background: transparent url("../gui/button-fullscreen2.png") center center no-repeat;
+    background: transparent url("../gui/button-fullscreen.png") center center no-repeat;
+}
+
+#present3d .fullscreen-button.active {
+    background: transparent url("../gui/button-fullscreen2.png") center center no-repeat;
+}
+
+
+
+#present3d .info, #present3d .help {
+	/*background-color: rgba(255, 248, 195, 0.95);*/  /*#fff8c3*/
+	background-color: rgba(255, 255, 255, 0.90);  
+	top: 0px; 
+	left: 0px; 
+	width: 100%;
+	height: 100%;
+	z-index: 1000; 
+	position: fixed; 
+	display: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#present3d .help-image {
+	position: relative;
+    background: transparent url("../gui/help.png") center center no-repeat;
+    width: 900px;
+    height: 640px;
+}
+
+#present3d .info-text, #present3d .help-text {
+	position: relative;
+	top: 50%;
+	margin: 0 auto;
+	margin-top: -365px;
+	z-index: 1001;
+	border: 10px solid #eee;
+	width: 100%;
+	height: 680px;
+	width: 900px;
+	padding: 15px;
+	text-indent: 0px;
+	text-align: center;
+	overflow: auto;	
+	background: linear-gradient(#fff, #F5F5F5);
+}
+
+#present3d .info-text {
+	top: 50%;
+	width: 690px;
+	height: 340px;
+	margin-top: -220px;
+	padding: 30px;
+	padding-top: 50px;
+	padding-bottom: 0px;
+}
+
+#present3d .info-text p {
+	font-size: 120%;
+	text-align: left;
+	line-height: 180%;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 20px;
+	color: #333;
+}
+
+#present3d .info-text h3 {
+	text-indent: 0px;
+	padding-left: 0px;
+	color: #333;
+	margin-bottom: 0px;
+}
+
+#present3d .info-text a {
+	color: #0B0080;
+	text-decoration: underline;
+}
+
+#present3d .info-text a:hover {
+	color: #0B0080;
+	text-decoration: none;
+}
+
+#present3d .info-icon {
+	padding-left: 90px;
+    background: transparent url("../gui/info-icon.png") 0px 0px no-repeat;
+}
+
+#present3d .warning-icon {
+	padding-left: 90px;
+    background: transparent url("../gui/warning-icon.png") 0px 0px no-repeat;
+}
+
+
+#present3d .close-info-button, #present3d .close-help-button {
+	position: absolute;
+	z-index: 10;
+	top: 10px;
+	left: 100%;
+	padding: 0px;
+	margin: 0px;
+	margin-left: -50px;
+	width: 40px;
+	height: 40px;
+    background: transparent url("../gui/button-cross.png") center center no-repeat;
+}
+
+
+
+
+/* *************** */
+/* ANIMATION PANEL */
+/* *************** */
+
+#present3d .panel-animation {
+	position: absolute;
+	z-index: 10;
+	top: 100%;
+	left: 0px;
+	margin-top: -54px;
+	width: 100%;
+	height: 50px;
+	background: #ffd781;
+    border-top: 4px solid #ffb820;
+}
+
+#present3d .playpause-button, #present3d .stop-button {
+    position: absolute;
+    z-index: 10;
+    top: -4px;
+    height: 54px;
+    width: 55px;
+    border-top: 4px solid #ffb820;
+    border-right: 1px dotted #ffb820;
+	transition: background-color 0.2s linear; 
+}
+
+#present3d .playpause-button {
+    left: 0px;
+    background: transparent url("../gui/button-play.png") center center no-repeat; 
+}
+
+#present3d .playpause-button.pause {
+    background: transparent url("../gui/button-pause.png") center center no-repeat; 
+}
+
+#present3d .stop-button {
+    left: 55px;
+    background: transparent url("../gui/button-stop.png") center center no-repeat; 
+}
+
+#present3d .playpause-button:hover, #present3d .stop-button:hover {
+    background-color: #ffcd61;
+}
+
+
+
+#present3d .animation {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    padding-left: 130px;
+    padding-right: 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+#present3d .animation .ui-slider-horizontal {
+    margin-top: 8px;
+	position: relative;
+    height: 6px;
+	width: 100%;
+	background: #fff;
+}
+
+#present3d .animation .ui-slider-horizontal .ui-slider-handle {
+	position: absolute;
+	height: 16px;
+	width: 16px;
+	z-index: 1;
+	background: transparent url("../gui/slider-handle-animation.png") 0px 0px no-repeat;
+}
+
+#present3d .animation .ui-slider-horizontal .ui-slider-handle:hover, #present3d .animation .ui-slider-horizontal .ui-slider-handle:focus {
+	background-position: -16px 0px;
+}
+ 
+#present3d .animation .ui-slider-horizontal .ui-slider-handle {
+	margin-top: -11px;
+	margin-left: -8px; 
+}
+ 
+#present3d .animation .ui-slider-horizontal .ui-slider-range {
+	background: #df0000;
+	height: 100%;
+}
+
+#present3d .animation-time, #present3d .animation-speed {
+    position: relative;
+	margin-top: 9px;
+    color: #000;
+    font-size: 90%;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+#present3d .animation-time {
+    float: right;
+}
+
+#present3d .animation-speed {
+    float: left;
+}
+
+#present3d .animation-speed button {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    text-transform: lowercase;
+    border: 1px solid #fff2d7;
+	border-radius: 2px; 
+	margin-left: 5px;
+	background-color: #ffdd94;
+	font-weight: bold;
+	transition: background-color 0.2s linear; 
+}
+
+#present3d .animation-speed button:hover, #present3d .animation-speed button.selected {
+    background-color: #fff2d7;
+}
+
+
+
+
+
+
+
+
+
+/* ******** */
+/* CONTROLS */
+/* ******** */
+
+#present3d .panel-controls {
+	position: absolute;
+	z-index: 10;
+	top: 100%;
+	left: 0px;
+	width: 100%;
+	margin-top: -54px;
+}
+
+#present3d .controls-button {
+	position: absolute;
+	top: -49px;
+	left: 50%;
+	margin-left: -75px;
+	text-transform: uppercase;
+	text-align: left;
+	width: 150px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 35px;
+	font-weight: bold;
+	font-size: 90%;
+	text-shadow: 0px 0px #000;
+    border: 1px solid #ccc;
+	border-radius: 4px; 
+	background: #f5f5f5 url("../gui/button-controls.png") 0px -22px no-repeat;
+	opacity: 0.5; 
+	transition: background-color 0.2s linear; 
+}
+
+#present3d .controls-button.active {
+	background: transparent url("../gui/button-controls.png") 0px 13px no-repeat;
+	border: none;
+	opacity: 1.0; 
+}
+
+#present3d .controls-button:hover {
+	background-color: #fcfcfc;
+	opacity: 1.0; 
+}
+
+#present3d .controls-button.active:hover {
+	background-color: transparent;
+}
+
+
+
+#present3d .controls {
+	position: absolute;
+	top: -150px;
+	left: 50%;
+	margin-left: -205px;
+	text-transform: uppercase;
+	text-align: center;
+	width: 405px;
+	height: 100px;
+	background: #f5f5f5;
+	border-radius: 4px; 
+	opacity: 0.20; 
+	transition: opacity 0.2s linear; 
+    border: 1px solid #ccc;
+}
+
+#present3d .controls:hover {
+	opacity: 0.95; 
+}
+
+#present3d .reset, #present3d .rotation, #present3d .translation, #present3d .zoom {
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 100px;
+    border-right: 1px dotted #ccc;
+}
+
+#present3d .zoom {
+    border-right: none;
+}
+
+#present3d .reset {
+	background: url("../gui/reset.png") 12px 4px no-repeat;
+}
+
+#present3d .rotation {
+	background: url("../gui/rotation.png") 9px 3px no-repeat;
+}
+
+#present3d .translation {
+	background: url("../gui/translation.png") 9px 4px no-repeat;
+}
+
+#present3d .controls-desc {
+	position: absolute;
+	top: 100%;
+	margin-top: -19px;
+	text-indent: 0px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 90%;
+}
+
+
+
+#present3d .reset-button {
+	position: absolute;
+    cursor: pointer;  
+    top: 18px;
+    left: 22px;   
+    width: 50px;
+    height: 50px;
+    border: none;
+    background: transparent url("../gui/button-reset.png") center center no-repeat;  
+}
+
+#present3d .reset-button:hover {
+	background-image: url("../gui/button-reset.png"), radial-gradient(circle, #fff, #fff, rgba(255,255,255,0));
+}
+
+
+
+
+#present3d .rotation-right-button, #present3d .translation-right-button {
+	position: absolute;
+    top: 29px;
+    left: 64px;  
+    width: 28px;
+    height: 28px;  
+    background: transparent url("../gui/button-arrow-right.png") center center no-repeat; 
+}
+
+#present3d .rotation-right-button:hover, #present3d .translation-right-button:hover {
+	background-image: url("../gui/button-arrow-right.png"), linear-gradient(to right, #fff, #fff, rgba(255,255,255,0));
+}
+
+#present3d .rotation-up-button, #present3d .translation-up-button {
+	position: absolute;
+    top: 0px;
+    left: 35px;     
+    width: 28px;
+    height: 28px;
+    background: transparent url("../gui/button-arrow-up.png") center center no-repeat; 
+}
+
+#present3d .rotation-up-button:hover, #present3d .translation-up-button:hover {
+	background-image: url("../gui/button-arrow-up.png"), linear-gradient(to top, #fff, #fff, rgba(255,255,255,0));
+}
+
+#present3d .rotation-left-button, #present3d .translation-left-button {
+	position: absolute;
+    top: 29px;
+    left: 6px;    
+    width: 28px;
+    height: 28px; 
+    background: transparent url("../gui/button-arrow-left.png") center center no-repeat; 
+}
+
+#present3d .rotation-left-button:hover, #present3d .translation-left-button:hover {
+	background-image: url("../gui/button-arrow-left.png"), linear-gradient(to left, #fff, #fff, rgba(255,255,255,0));
+}
+
+#present3d .rotation-down-button, #present3d .translation-down-button {
+	position: absolute;
+    top: 58px;
+    left: 35px;   
+    width: 28px;
+    height: 28px;  
+    background: transparent url("../gui/button-arrow-down.png") center center no-repeat; 
+}
+
+#present3d .rotation-down-button:hover, #present3d .translation-down-button:hover {
+	background-image: url("../gui/button-arrow-down.png"), linear-gradient(to bottom, #fff, #fff, rgba(255,255,255,0));
+}
+
+
+
+#present3d .plus-button, #present3d .minus-button {
+	position: absolute;
+    top: 20px;
+    left: 50%; 
+    width: 35px;
+    height: 35px;  
+	border-radius: 4px; 
+}
+
+#present3d .plus-button:hover, #present3d .minus-button:hover {
+	background-color: #fff;
+}
+
+#present3d .plus-button {
+    margin-left: 5px; 
+    background: #e5e5e4 url("../gui/button-plus.png") center center no-repeat; 
+}
+
+#present3d .minus-button {
+    margin-left: -40px;  
+    background: #e5e5e4 url("../gui/button-minus.png") center center no-repeat; 
+}
+
+
+
+
+
+/* ************* */
+/* STATS UTILITY */
+/* ************* */
+
+#present3d .stats-utility {
+	position: absolute;
+	z-index: 10;
+	top: 70px;
+	left: 100%;
+	margin-left: -100px;
+	cursor: pointer;
+	width: 80px;
+	display: none;
+}
+
+
+
+
+
+/* ************************* */
+/* MENU UTILITY - DAT.GUI.JS */
+/* ************************* */
+
+#present3d .dg {
+	background: #000000;
+}
+
+#present3d .dg input, #present3d .dg select {
+	font-size: 120%;
+}
+
+#present3d .dg ul {
+    clear: both;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border-left: none;
+    margin-top: 54px;
+    padding-bottom: 20px;
+}
+
+#present3d .dg ul.closed {
+    padding-bottom: 0px;
+}
+
+#present3d .dg ul ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+#present3d .dg.ac {
+    height: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+#present3d .dg:not(.ac) .main {
+    overflow: hidden;
+}
+
+#present3d .dg.main {
+    transition: opacity 0.1s linear 0s;
+}
+
+#present3d .dg.main.taller-than-window {
+    overflow-y: auto;
+}
+
+#present3d .dg.main.taller-than-window .close-button {
+    border-top: 1px solid #2C2C2C;
+    margin-top: -1px;
+    opacity: 1;
+}
+
+#present3d .dg.main ul.closed .close-button {
+    opacity: 1 !important;
+}
+
+#present3d .dg.main:hover .close-button, #present3d .dg.main .close-button.drag {
+    opacity: 1;
+}
+
+#present3d .dg.main .close-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #ffd781 url("../gui/button-menu.png") 0px -50px no-repeat;
+    border: 0 none;
+    height: 54px;
+    line-height: 19px;
+    text-align: left;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 5px;
+    text-indent: 55px;
+    border-bottom: 4px solid #ffb820;
+    width: 100%;
+    border-right: 1px dotted #ffb820;
+	transition: background-color 0.2s linear; 
+	font-family: Helvetica, Arial, sans-serif; 
+    font-size: 120%;
+    text-shadow: 0 -1px 0 #111111;
+}
+
+#present3d .dg.main .close-button.closed {
+    background-position: 0px 0px;
+}
+
+#present3d .dg.main .close-button:hover {
+    background-color: #ffcd61;
+}
+
+#present3d .dg.a {
+    float: right;
+    margin-right: 15px;
+    overflow-x: hidden;
+}
+
+#present3d .dg.a.has-save ul {
+    margin-top: 27px;
+}
+
+#present3d .dg.a.has-save ul.closed {
+    margin-top: 0;
+}
+
+#present3d .dg.a .save-row {
+    position: fixed;
+    top: 0;
+    z-index: 1002;
+}
+
+#present3d .dg li {
+    transition: height 0.1s ease-out 0s;
+    color: #ccc;
+    text-align: left;
+}
+
+#present3d .dg li:not(.folder) {
+    cursor: auto;
+    line-height: 27px;
+    overflow: hidden;
+    padding: 0px 4px 0 10px;
+}
+
+#present3d .dg li.folder {
+    border-left: 4px solid transparent;
+    padding: 0;
+}
+
+#present3d .dg li.tinker {
+    height: 200px;
+}
+
+#present3d .dg li.tinker textarea {
+    height: 200px;
+    margin-left: -5px;
+    resize: none;
+    width: 100%;
+}
+
+#present3d .dg li.title {
+    cursor: pointer;
+    height: 37px;
+    margin-left: -4px;
+    color: #fff;
+    padding-top: 12px;
+}
+
+#present3d .dg .closed li:not(.title), #present3d .dg .closed ul li, #present3d .dg .closed ul li > * {
+    border: 0 none;
+    height: 0;
+    overflow: hidden;
+}
+
+#present3d .dg .cr {
+    clear: both;
+    height: 27px;
+    padding-left: 3px;
+}
+
+#present3d .dg .property-name {
+    clear: left;
+    cursor: default;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 40%;
+}
+
+#present3d .dg .c {
+    float: left;
+    width: 60%;
+}
+
+#present3d .dg .c input[type="text"] {
+    border: 0 none;
+    float: right;
+    margin-top: 4px;
+    padding: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 100%;
+}
+
+#present3d .dg .has-slider input[type="text"] {
+    margin-left: 0;
+    width: 30%;
+}
+
+#present3d .dg .slider {
+    float: left;
+    height: 19px;
+    margin-left: -5px;
+    margin-right: 0;
+    margin-top: 4px;
+    width: 66%;
+}
+
+#present3d .dg .slider-fg {
+    height: 100%;
+}
+
+#present3d .dg .c input[type="checkbox"] {
+    margin-top: 9px;
+}
+
+#present3d .dg .c select {
+    margin-top: 5px;
+    width: 100%;
+    border: 0px;
+    margin-left: 0px;
+}
+
+#present3d .dg .cr.function:not(.tinker), #present3d dg .cr.function:not(.tinker) .property-name, #present3d .dg .cr.function:not(.tinker), #present3d .dg .cr.boolean, #present3d .dg .cr.boolean {
+    cursor: pointer;
+}
+
+#present3d .dg .selector {
+    display: none;
+    margin-left: 0px;
+    margin-top: 23px;
+    position: absolute;
+    z-index: 10;
+}
+
+#present3d .dg .c:hover .selector, #present3d .dg .selector.drag {
+    display: block;
+}
+
+#present3d .dg.dialogue {
+    background-color: #222222;
+    font-size: 13px;
+    line-height: 15px;
+    padding: 15px;
+    width: 460px;
+}
+
+#present3d #dg-new-constructor {
+    border: 0 none;
+    box-shadow: 1px 1px 1px #888888 inset;
+    color: #222222;
+    display: block;
+    font-family: Monaco, monospace;
+    font-size: 10px;
+    height: 100px;
+    margin: 12px 0;
+    overflow-y: scroll;
+    padding: 10px;
+    position: relative;
+    resize: none;
+    width: 440px;
+    word-wrap: break-word;
+}
+
+#present3d #dg-local-explain {
+    background-color: #333333;
+    border-radius: 3px 3px 3px 3px;
+    display: none;
+    font-size: 11px;
+    line-height: 17px;
+    margin-top: 10px;
+    padding: 8px;
+}
+
+#present3d #dg-local-explain code {
+    font-size: 10px;
+}
+
+#present3d #dat-gui-save-locally {
+    display: none;
+}
+
+#present3d .dg {
+    color: #EEEEEE;
+    font: 11px 'Lucida Grande',sans-serif;
+    text-shadow: 0 -1px 0 #111111;
+}
+
+#present3d .dg li:not(.folder) {
+    background: none repeat scroll 0 0 #1A1A1A;
+    border-bottom: 1px solid #2C2C2C;
+}
+
+#present3d .dg li.save-row {
+    background: none repeat scroll 0 0 #000;
+    border: 0 none;
+    line-height: 25px;
+    border-bottom: 1px solid #2C2C2C;
+    padding: 0;
+    height: 40px;
+}
+
+#present3d .dg li.save-row .button {
+    display: inline-block;
+    padding: 0 6px;
+    background: none repeat scroll 0 0 #C5BDAD;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 -1px 0 #B0A58F;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 9px;
+    line-height: 10px;
+    margin-left: 5px;
+    padding: 4px 4px 5px;
+    text-shadow: 0 1px 0 #B0A58F;
+}
+
+#present3d .dg li.save-row select {
+    margin-left: 5px;
+    margin-top: 8px;
+    width: 108px;
+}
+
+#present3d .dg li.save-row .button.gears {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAANCAYAAAB/9ZQ7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNpiYKAU/P//PwGIC/ApCABiBSAW+I8AClAcgKxQ4T9hoMAEUrxx2QSGN6+egDX+/vWT4e7N82AMYoPAx/evwWoYoSYbACX2s7KxCxzcsezDh3evFoDEBYTEEqycggWAzA9AuUSQQgeYPa9fPv6/YWm/Acx5IPb7ty/fw+QZblw67vDs8R0YHyQhgObx+yAJkBqmG5dPPDh1aPOGR/eugW0G4vlIoTIfyFcA+QekhhHJhPdQxbiAIguMBTQZrPD7108M6roWYDFQiIAAv6Aow/1bFwXgis+f2LUAynwoIaNcz8XNx3Dl7MEJUDGQpx9gtQ8YCueB+D26OECAAQDadt7e46D42QAAAABJRU5ErkJggg==") no-repeat scroll 2px 2px #C5BDAD;
+    height: 10px;
+    width: 8px;
+}
+
+#present3d .dg li.save-row .button:hover {
+    background-color: #BAB19E;
+    box-shadow: 0 -1px 0 #B0A58F;
+}
+
+#present3d .dg li.folder {
+    border-bottom: 0 none;
+}
+
+#present3d .dg li.title {
+    background: url("data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==") no-repeat scroll 6px 21px #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    padding-left: 16px;
+    text-transform: uppercase;
+}
+
+#present3d .dg li.folder li.folder li.title {
+    cursor: pointer;
+    height: 28px;
+    margin-left: -4px;
+    color: #fff;
+    padding-top: 3px;
+    padding-left: 35px;
+    background-position: 20px 13px;
+    text-transform: none;
+    background-color: #0f0f0f;
+}
+
+#present3d .dg .closed li.title {
+    background-image: url("data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlGIWqMCbWAEAOw==");
+}
+
+#present3d .dg .cr.boolean {
+    border-left: 3px solid #806787;
+}
+
+#present3d .dg .cr.function {
+    border-left: 3px solid #E61D5F;
+}
+
+#present3d .dg .cr.number {
+    border-left: 3px solid #2FA1D6;
+}
+
+#present3d .dg .cr.number input[type="text"] {
+    color: #2FA1D6;
+}
+
+#present3d .dg .cr.string {
+    border-left: 3px solid #1ED36F;
+}
+
+#present3d .dg .cr.string input[type="text"] {
+    color: #1ED36F;
+}
+
+#present3d .dg .cr.function:hover:not(.tinker), .dg .cr.boolean:hover {
+    background: none repeat scroll 0 0 #111111;
+}
+
+#present3d .dg .c input[type="text"] {
+    background: none repeat scroll 0 0 #303030;
+    outline: medium none;
+}
+
+#present3d .dg .c input[type="text"]:hover {
+    background: none repeat scroll 0 0 #3C3C3C;
+}
+
+#present3d .dg .c input[type="text"]:focus {
+    background: none repeat scroll 0 0 #494949;
+    color: #FFFFFF;
+}
+
+#present3d .dg .c .slider {
+    background: none repeat scroll 0 0 #303030;
+    cursor: ew-resize;
+    margin-left: -7px;
+    height: 15px;
+}
+
+#present3d .dg .c .slider-fg {
+    background: none repeat scroll 0 0 #2FA1D6;
+}
+
+#present3d .dg .c .slider:hover {
+    background: none repeat scroll 0 0 #3C3C3C;
+}
+
+#present3d .dg .c .slider:hover .slider-fg {
+    background: none repeat scroll 0 0 #44ABDA;
+}
