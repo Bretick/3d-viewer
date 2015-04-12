@@ -1,4 +1,4 @@
-# Interactive 3D Viewer
+Interactive 3D Viewer
 ==
 
 **Interactive viewer of 3D objects and animations** for web environment based on WebGL technology.
@@ -16,9 +16,8 @@ Basic use
 Conditions for use of the 3D Viewer on the page:
 * the page has to be written in HTML5
 * there has to be included "viewer3d/css/viewer3d.css" and "viewer3d/app/viewer3d.all.min.js" 
-* placement of the viewer in the page is defined by DIV element with specific ID, e.g. tooth-model (there can be also added alternative content like static images, text description and so on)
-
-Initialization code of the viewer can look like this:
+* placement of the viewer in the page is defined by DIV element with specific ID, e.g. tooth-model (there can be also added alternative content like static images, text description, etc.)
+* initialization code of the viewer
 ```
 new Viewer3D.App({
 		id: 'tooth-model',
