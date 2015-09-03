@@ -10,14 +10,14 @@ The viewer enables use of multiple instances on the same page and can load 3D mo
 The web application of 3D viewer is under GNU General Public License, is based on **HTML5**, **CSS3** and **WebGL** technology and uses JavaScript libraries **Three.js**, **OrbitControls.js**, **SEA3D.js**, **jQuery.js**, **jQueryUI.js**, **Dat.gui.js** and **Stats.js**.   
 
 **Shortcut to core JS files of the app:**
-* Viewer3D.App class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/Viewer3D.js <br />
-* Viewer3D.AppModel class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppModel.js <br />
-* Viewer3D.AppView class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppView.js <br />
-* Viewer3D.AppController class
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppController.js <br />
+* Viewer3D.App class<br /> 
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/Viewer3D.js 
+* Viewer3D.AppModel class<br /> 
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppModel.js 
+* Viewer3D.AppView class<br /> 
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppView.js
+* Viewer3D.AppController class<br />
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppController.js
 
 
 Basic use
