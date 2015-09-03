@@ -11,16 +11,13 @@ The web application of 3D viewer is under GNU General Public License, is based o
 
 **Shortcut to core JS files of the app:**
 * Viewer3D.App class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/Viewer3D.js
-
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/Viewer3D.js <br />
 * Viewer3D.AppModel class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppModel.js
-
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppModel.js <br />
 * Viewer3D.AppView class 
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppView.js
-
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppView.js <br />
 * Viewer3D.AppController class
-https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppController.js
+https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppController.js <br />
 
 
 Basic use
