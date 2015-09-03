@@ -9,6 +9,12 @@ The viewer enables use of multiple instances on the same page and can load 3D mo
 
 The web application of 3D viewer is under GNU General Public License, is based on **HTML5**, **CSS3** and **WebGL** technology and uses JavaScript libraries **Three.js**, **OrbitControls.js**, **SEA3D.js**, **jQuery.js**, **jQueryUI.js**, **Dat.gui.js** and **Stats.js**.   
 
+**Shortcut to core JS files of the app:**
+* Viewer3D.App class - https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/Viewer3D.js
+* Viewer3D.AppModel class - https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppModel.js
+* Viewer3D.AppView class - https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppView.js
+* Viewer3D.AppController class - https://github.com/Bretick/3d-viewer/blob/master/viewer3d/app/AppController.js
+
 
 Basic use
 --
@@ -39,6 +45,6 @@ Sources of this project are part of my final thesis from Master's studies at Mas
 
 *Abstract of the thesis*
 
-Web technologies and tools are together with computing performance of devices in a state where it is possible to make interactive 3D visualizations accessible by web browsers to a large number of web users. Thus, interactive 3D graphics do not have to be a privilege of desktop applications only, but it can be used in the web environment either. The thesis deals with analysis of web technologies and tools for using interactive 3D graphics on the web and describes their abilities, features and aspects of use. Information gained from the analysis became the solid foundation for the choice of a suitable combination of these technologies and tools for a realization of specific application. The application, developed by the author of the thesis, is a viewer of 3D models and animations, which are created by Servisní støedisko pro e-learning na MU. The thesis describes the design of the web application and solution of main implementation problems and presents basic information necessary for preparation and use of 3D models and animations. The thesis focuses especially on the use in the field of e-learning and therefore the author as well analyses and introduces specific examples of the use of interactive 3D graphics in the mentioned field.
+Web technologies and tools are together with computing performance of devices in a state where it is possible to make interactive 3D visualizations accessible by web browsers to a large number of web users. Thus, interactive 3D graphics do not have to be a privilege of desktop applications only, but it can be used in the web environment either. The thesis deals with analysis of web technologies and tools for using interactive 3D graphics on the web and describes their abilities, features and aspects of use. Information gained from the analysis became the solid foundation for the choice of a suitable combination of these technologies and tools for a realization of specific application. The application, developed by the author of the thesis, is a viewer of 3D models and animations, which are created by Servisnï¿½ stï¿½edisko pro e-learning na MU. The thesis describes the design of the web application and solution of main implementation problems and presents basic information necessary for preparation and use of 3D models and animations. The thesis focuses especially on the use in the field of e-learning and therefore the author as well analyses and introduces specific examples of the use of interactive 3D graphics in the mentioned field.
 
 
